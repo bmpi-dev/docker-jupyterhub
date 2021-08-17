@@ -29,14 +29,14 @@ The following are the minimal [recommended requirements](https://github.com/only
 Use SSH to connect your instance and run the automatic installation script below
 
 ```
-sudo wget -N https://raw.githubusercontent.com/Websoft9/docker-template/main/docker-installer.sh; sudo bash docker-installer.sh -r onlyoffice
+sudo wget -N https://raw.githubusercontent.com/Websoft9/StackHub/main/docker-installer.sh; sudo bash docker-installer.sh -r onlyoffice
 ```
 ### package install
 
 1.Make package
 You can get the  package as following script
 ```
-sudo wget -N https://raw.githubusercontent.com/Websoft9/docker-template/main/docker-installer.sh; sudo bash docker-installer.sh -r onlyoffice -p
+sudo wget -N https://raw.githubusercontent.com/Websoft9/StackHub/main/docker-installer.sh; sudo bash docker-installer.sh -r onlyoffice -p
 ```
 
 2.Install by package
