@@ -1,11 +1,23 @@
+<<<<<<< HEAD
+=======
+# Make deploy example
+
+>>>>>>> 70178b8e48d7825ceade6e2decf374bc3e792d90
 This folder contains a Makefile and a set of supporting files demonstrating how to run a docker-stack notebook container on a docker-machine controlled host.
 
 ## Prerequisites
 
+<<<<<<< HEAD
 * make 3.81+
     * Ubuntu users: Be aware of [make 3.81 defect 483086](https://bugs.launchpad.net/ubuntu/+source/make-dfsg/+bug/483086) which exists in 14.04 LTS but is fixed in 15.04+
 * docker-machine 0.5.0+
 * docker 1.9.0+
+=======
+- make 3.81+
+  - Ubuntu users: Be aware of [make 3.81 defect 483086](https://bugs.launchpad.net/ubuntu/+source/make-dfsg/+bug/483086) which exists in 14.04 LTS but is fixed in 15.04+
+- docker-machine 0.5.0+
+- docker 1.9.0+
+>>>>>>> 70178b8e48d7825ceade6e2decf374bc3e792d90
 
 ## Quickstart
 
@@ -46,7 +58,12 @@ make notebook NAME=your-notebook PORT=9001 WORK_VOLUME=our-work
 
 ### How do I run over HTTPS?
 
+<<<<<<< HEAD
 Instead of `make notebook`, run `make self-signed-notebook PASSWORD=your_desired_password`. This target gives you a notebook with a self-signed certificate.
+=======
+Instead of `make notebook`, run `make self-signed-notebook PASSWORD=your_desired_password`.
+This target gives you a notebook with a self-signed certificate.
+>>>>>>> 70178b8e48d7825ceade6e2decf374bc3e792d90
 
 ### That self-signed certificate is a pain. Let's Encrypt?
 
@@ -57,15 +74,31 @@ make letsencrypt FQDN=host.mydomain.com EMAIL=myemail@somewhere.com
 make letsencrypt-notebook
 ```
 
+<<<<<<< HEAD
 The first command creates a Docker volume named after the notebook container with a `-secrets` suffix. It then runs the `letsencrypt` client with a slew of options (one of which has you automatically agreeing to the Let's Encrypt Terms of Service, see the Makefile). The second command mounts the secrets volume and configures Jupyter to use the full-chain certificate and private key.
 
 Be aware: Let's Encrypt has a pretty [low rate limit per domain](https://community.letsencrypt.org/t/public-beta-rate-limits/4772/3) at the moment.  You can avoid exhausting your limit by testing against the Let's Encrypt staging servers.  To hit their staging servers, set the environment variable `CERT_SERVER=--staging`.
+=======
+The first command creates a Docker volume named after the notebook container with a `-secrets` suffix.
+It then runs the `letsencrypt` client with a slew of options (one of which has you automatically agreeing to the Let's Encrypt Terms of Service, see the Makefile).
+The second command mounts the secrets volume and configures Jupyter to use the full-chain certificate and private key.
+
+Be aware: Let's Encrypt has a pretty [low rate limit per domain](https://community.letsencrypt.org/t/public-beta-rate-limits/4772/3) at the moment.
+You can avoid exhausting your limit by testing against the Let's Encrypt staging servers.
+To hit their staging servers, set the environment variable `CERT_SERVER=--staging`.
+>>>>>>> 70178b8e48d7825ceade6e2decf374bc3e792d90
 
 ```bash
 make letsencrypt FQDN=host.mydomain.com EMAIL=myemail@somewhere.com CERT_SERVER=--staging
 ```
 
+<<<<<<< HEAD
 Also, keep in mind Let's Encrypt certificates are short lived: 90 days at the moment. You'll need to manually setup a cron job to run the renewal steps at the moment. (You can reuse the first command above.)
+=======
+Also, keep in mind Let's Encrypt certificates are short lived: 90 days at the moment.
+You'll need to manually setup a cron job to run the renewal steps at the moment.
+(You can reuse the first command above.)
+>>>>>>> 70178b8e48d7825ceade6e2decf374bc3e792d90
 
 ### My pip/conda/apt-get installs disappear every time I restart the container. Can I make them permanent?
 
@@ -84,11 +117,22 @@ make image DOCKER_ARGS=--pull
 make notebook
 ```
 
+<<<<<<< HEAD
 The first line pulls the latest version of the Docker image used in the local Dockerfile. Then it rebuilds the local Docker image containing any customizations you may have added to it. The second line kills your currently running notebook container, and starts a fresh one using the new image.
 
 ### Can I run on another VM provider other than VirtualBox?
 
 Yes. As an example, there's a `softlayer.makefile` included in this repo as an example. You would use it like so:
+=======
+The first line pulls the latest version of the Docker image used in the local Dockerfile.
+Then it rebuilds the local Docker image containing any customizations you may have added to it.
+The second line kills your currently running notebook container, and starts a fresh one using the new image.
+
+### Can I run on another VM provider other than VirtualBox?
+
+Yes. As an example, there's a `softlayer.makefile` included in this repo as an example.
+You would use it like so:
+>>>>>>> 70178b8e48d7825ceade6e2decf374bc3e792d90
 
 ```bash
 make softlayer-vm NAME=myhost \
@@ -110,7 +154,12 @@ If you'd like to add support for another docker-machine driver, use the `softlay
 
 ### Uh ... make?
 
+<<<<<<< HEAD
 Yes, sorry Windows users. It got the job done for a simple example. We can certainly accept other deployment mechanism examples in the parent folder or in other repos.
+=======
+Yes, sorry Windows users. It got the job done for a simple example.
+We can certainly accept other deployment mechanism examples in the parent folder or in other repos.
+>>>>>>> 70178b8e48d7825ceade6e2decf374bc3e792d90
 
 ### Are there any other options?
 

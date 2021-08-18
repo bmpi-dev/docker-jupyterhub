@@ -1,10 +1,21 @@
+<<<<<<< HEAD
+=======
+# Docker Compose example
+
+>>>>>>> 70178b8e48d7825ceade6e2decf374bc3e792d90
 This example demonstrate how to deploy docker-stack notebook containers to any Docker Machine-controlled host using Docker Compose.
 
 ## Prerequisites
 
+<<<<<<< HEAD
 * [Docker Engine](https://docs.docker.com/engine/) 1.10.0+
 * [Docker Machine](https://docs.docker.com/machine/) 0.6.0+
 * [Docker Compose](https://docs.docker.com/compose/) 1.6.0+
+=======
+- [Docker Engine](https://docs.docker.com/engine/) 1.10.0+
+- [Docker Machine](https://docs.docker.com/machine/) 0.6.0+
+- [Docker Compose](https://docs.docker.com/compose/) 1.6.0+
+>>>>>>> 70178b8e48d7825ceade6e2decf374bc3e792d90
 
 See the [installation instructions](https://docs.docker.com/engine/installation/) for your environment.
 
@@ -32,15 +43,26 @@ To stop and remove the container:
 notebook/down.sh
 ```
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 70178b8e48d7825ceade6e2decf374bc3e792d90
 ## FAQ
 
 ### How do I specify which docker-stack notebook image to deploy?
 
+<<<<<<< HEAD
 You can customize the docker-stack notebook image to deploy by modifying the `notebook/Dockerfile`.  For example, you can build and deploy a `jupyter/all-spark-notebook` by modifying the Dockerfile like so:
 
 ```dockerfile
 FROM jupyter/all-spark-notebook:55d5ca6be183
+=======
+You can customize the docker-stack notebook image to deploy by modifying the `notebook/Dockerfile`.
+For example, you can build and deploy a `jupyter/all-spark-notebook` by modifying the Dockerfile like so:
+
+```dockerfile
+FROM jupyter/all-spark-notebook:33add21fab64
+>>>>>>> 70178b8e48d7825ceade6e2decf374bc3e792d90
 ...
 ```
 
@@ -73,7 +95,10 @@ NAME=your-notebook notebook/down.sh
 
 The `up.sh` creates a Docker volume named after the notebook container with a `-work` suffix, e.g., `my-notebook-work`.
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 70178b8e48d7825ceade6e2decf374bc3e792d90
 ### Can multiple notebook containers share the same notebook volume?
 
 Yes. Set the `WORK_VOLUME` environment variable to the same value for each notebook.
@@ -85,7 +110,13 @@ NAME=your-notebook PORT=9001 WORK_VOLUME=our-work notebook/up.sh
 
 ### How do I run over HTTPS?
 
+<<<<<<< HEAD
 To run the notebook server with a self-signed certificate, pass the `--secure` option to the `up.sh` script.  You must also provide a password, which will be used to secure the notebook server.  You can specify the password by setting the `PASSWORD` environment variable, or by passing it to the `up.sh` script.  
+=======
+To run the notebook server with a self-signed certificate, pass the `--secure` option to the `up.sh` script.
+You must also provide a password, which will be used to secure the notebook server.
+You can specify the password by setting the `PASSWORD` environment variable, or by passing it to the `up.sh` script.
+>>>>>>> 70178b8e48d7825ceade6e2decf374bc3e792d90
 
 ```bash
 PASSWORD=a_secret notebook/up.sh --secure
@@ -96,10 +127,17 @@ notebook/up.sh --secure --password a_secret
 
 ### Can I use Let's Encrypt certificate chains?
 
+<<<<<<< HEAD
 Sure.  If you want to secure access to publicly addressable notebook containers, you can generate a free certificate using the [Let's Encrypt](https://letsencrypt.org) service.
 
 
 This example includes the `bin/letsencrypt.sh` script, which runs the `letsencrypt` client to create a full-chain certificate and private key, and stores them in a Docker volume.  _Note:_ The script hard codes several `letsencrypt` options, one of which automatically agrees to the Let's Encrypt Terms of Service.
+=======
+Sure. If you want to secure access to publicly addressable notebook containers, you can generate a free certificate using the [Let's Encrypt](https://letsencrypt.org) service.
+
+This example includes the `bin/letsencrypt.sh` script, which runs the `letsencrypt` client to create a full-chain certificate and private key, and stores them in a Docker volume.
+_Note:_ The script hard codes several `letsencrypt` options, one of which automatically agrees to the Let's Encrypt Terms of Service.
+>>>>>>> 70178b8e48d7825ceade6e2decf374bc3e792d90
 
 The following command will create a certificate chain and store it in a Docker volume named `mydomain-secrets`.
 
@@ -109,7 +147,12 @@ FQDN=host.mydomain.com EMAIL=myemail@somewhere.com \
   bin/letsencrypt.sh
 ```
 
+<<<<<<< HEAD
 Now run `up.sh` with the `--letsencrypt` option.  You must also provide the name of the secrets volume and a password.
+=======
+Now run `up.sh` with the `--letsencrypt` option.
+You must also provide the name of the secrets volume and a password.
+>>>>>>> 70178b8e48d7825ceade6e2decf374bc3e792d90
 
 ```bash
 PASSWORD=a_secret SECRETS_VOLUME=mydomain-secrets notebook/up.sh --letsencrypt
@@ -118,7 +161,13 @@ PASSWORD=a_secret SECRETS_VOLUME=mydomain-secrets notebook/up.sh --letsencrypt
 notebook/up.sh --letsencrypt --password a_secret --secrets mydomain-secrets
 ```
 
+<<<<<<< HEAD
 Be aware that Let's Encrypt has a pretty [low rate limit per domain](https://community.letsencrypt.org/t/public-beta-rate-limits/4772/3) at the moment.  You can avoid exhausting your limit by testing against the Let's Encrypt staging servers.  To hit their staging servers, set the environment variable `CERT_SERVER=--staging`.
+=======
+Be aware that Let's Encrypt has a pretty [low rate limit per domain](https://community.letsencrypt.org/t/public-beta-rate-limits/4772/3) at the moment.
+You can avoid exhausting your limit by testing against the Let's Encrypt staging servers.
+To hit their staging servers, set the environment variable `CERT_SERVER=--staging`.
+>>>>>>> 70178b8e48d7825ceade6e2decf374bc3e792d90
 
 ```bash
 FQDN=host.mydomain.com EMAIL=myemail@somewhere.com \
@@ -126,11 +175,22 @@ FQDN=host.mydomain.com EMAIL=myemail@somewhere.com \
   bin/letsencrypt.sh
 ```
 
+<<<<<<< HEAD
 Also, be aware that Let's Encrypt certificates are short lived (90 days).  If you need them for a longer period of time, you'll need to manually setup a cron job to run the renewal steps. (You can reuse the command above.)
 
 ### Can I deploy to any Docker Machine host?
 
 Yes, you should be able to deploy to any Docker Machine-controlled host.  To make it easier to get up and running, this example includes scripts to provision Docker Machines to VirtualBox and IBM SoftLayer, but more scripts are welcome!
+=======
+Also, be aware that Let's Encrypt certificates are short lived (90 days).
+If you need them for a longer period of time, you'll need to manually setup a cron job to run the renewal steps.
+(You can reuse the command above.)
+
+### Can I deploy to any Docker Machine host?
+
+Yes, you should be able to deploy to any Docker Machine-controlled host.
+To make it easier to get up and running, this example includes scripts to provision Docker Machines to VirtualBox and IBM SoftLayer, but more scripts are welcome!
+>>>>>>> 70178b8e48d7825ceade6e2decf374bc3e792d90
 
 To create a Docker machine using a VirtualBox VM on local desktop:
 
@@ -152,10 +212,16 @@ bin/softlayer.sh myhost
 bin/sl-dns.sh myhost
 ```
 
+<<<<<<< HEAD
 
 ## Troubleshooting
 
 ### Unable to connect to VirtualBox VM on Mac OS X when using Cisco VPN client.
+=======
+## Troubleshooting
+
+### Unable to connect to VirtualBox VM on Mac OS X when using Cisco VPN client
+>>>>>>> 70178b8e48d7825ceade6e2decf374bc3e792d90
 
 The Cisco VPN client blocks access to IP addresses that it does not know about, and may block access to a new VM if it is created while the Cisco VPN client is running.
 

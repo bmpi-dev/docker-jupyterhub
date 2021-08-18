@@ -12,6 +12,10 @@ sphinx:
 formats: all
 
 python:
+<<<<<<< HEAD
   version: 3.7
+=======
+  version: 3.8
+>>>>>>> 70178b8e48d7825ceade6e2decf374bc3e792d90
   install:
     - requirements: requirements-dev.txt

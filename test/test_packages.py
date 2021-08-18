@@ -7,12 +7,20 @@ test_packages
 This test module tests if R and Python packages installed can be imported.
 It's a basic test aiming to prove that the package is working properly.
 
+<<<<<<< HEAD
 The goal is to detect import errors that can be caused by incompatibilities between packages for example:
+=======
+The goal is to detect import errors that can be caused by incompatibilities between packages, for example:
+>>>>>>> 70178b8e48d7825ceade6e2decf374bc3e792d90
 
 - #1012: issue importing `sympy`
 - #966: isssue importing `pyarrow`
 
+<<<<<<< HEAD
 This module checks dynmamically, through the `CondaPackageHelper`, only the specified packages i.e. packages requested by `conda install` in the `Dockerfiles`.
+=======
+This module checks dynamically, through the `CondaPackageHelper`, only the specified packages i.e. packages requested by `conda install` in the `Dockerfile`s.
+>>>>>>> 70178b8e48d7825ceade6e2decf374bc3e792d90
 This means that it does not check dependencies. This choice is a tradeoff to cover the main requirements while achieving reasonable test duration.
 However it could be easily changed (or completed) to cover also dependencies `package_helper.installed_packages()` instead of `package_helper.specified_packages()`.
 
@@ -68,7 +76,13 @@ EXCLUDED_PACKAGES = [
     "protobuf",
     "r-irkernel",
     "unixodbc",
+<<<<<<< HEAD
     "bzip2"
+=======
+    "bzip2",
+    "openssl",
+    "ca-certificates",
+>>>>>>> 70178b8e48d7825ceade6e2decf374bc3e792d90
 ]
 
 
@@ -86,10 +100,14 @@ def packages(package_helper):
 
 def package_map(package):
     """Perform a mapping between the python package name and the name used for the import"""
+<<<<<<< HEAD
     _package = package
     if _package in PACKAGE_MAPPING:
         _package = PACKAGE_MAPPING.get(_package)
     return _package
+=======
+    return PACKAGE_MAPPING.get(package, package)
+>>>>>>> 70178b8e48d7825ceade6e2decf374bc3e792d90
 
 
 def excluded_package_predicate(package):

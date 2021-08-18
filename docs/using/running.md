@@ -9,12 +9,25 @@ This section provides details about the second.
 
 ## Using the Docker CLI
 
+<<<<<<< HEAD
 You can launch a local Docker container from the Jupyter Docker Stacks using the [Docker command line interface](https://docs.docker.com/engine/reference/commandline/cli/). There are numerous ways to configure containers using the CLI. The following are some common patterns.
 
 **Example 1** This command pulls the `jupyter/scipy-notebook` image tagged `2c80cf3537ca` from Docker Hub if it is not already present on the local host. It then starts a container running a Jupyter Notebook server and exposes the server on host port 8888. The server logs appear in the terminal and include a URL to the notebook server.
 
 ```
 docker run -p 8888:8888 jupyter/scipy-notebook:2c80cf3537ca
+=======
+You can launch a local Docker container from the Jupyter Docker Stacks using the [Docker command line interface](https://docs.docker.com/engine/reference/commandline/cli/).
+There are numerous ways to configure containers using the CLI.
+The following are some common patterns.
+
+**Example 1** This command pulls the `jupyter/scipy-notebook` image tagged `33add21fab64` from Docker Hub if it is not already present on the local host.
+It then starts a container running a Jupyter Notebook server and exposes the server on host port 8888.
+The server logs appear in the terminal and include a URL to the notebook server.
+
+```bash
+$ docker run -p 8888:8888 jupyter/scipy-notebook:33add21fab64
+>>>>>>> 70178b8e48d7825ceade6e2decf374bc3e792d90
 
 Executing the command: jupyter notebook
 [I 15:33:00.567 NotebookApp] Writing notebook server cookie secret to /home/jovyan/.local/share/jupyter/runtime/notebook_cookie_secret
@@ -35,19 +48,30 @@ Executing the command: jupyter notebook
 
 Pressing `Ctrl-C` shuts down the notebook server but leaves the container intact on disk for later restart or permanent deletion using commands like the following:
 
+<<<<<<< HEAD
 ```
 # list containers
 docker ps -a
+=======
+```bash
+# list containers
+$ docker ps -a
+>>>>>>> 70178b8e48d7825ceade6e2decf374bc3e792d90
 CONTAINER ID        IMAGE                   COMMAND                  CREATED    STATUS                      PORTS               NAMES
 d67fe77f1a84        jupyter/base-notebook   "tini -- start-noteb…"   44 seconds ago    Exited (0) 39 seconds ago                       cocky_mirzakhani
 
 # start the stopped container
+<<<<<<< HEAD
 docker start -a d67fe77f1a84
+=======
+$ docker start -a d67fe77f1a84
+>>>>>>> 70178b8e48d7825ceade6e2decf374bc3e792d90
 Executing the command: jupyter notebook
 [W 16:45:02.020 NotebookApp] WARNING: The notebook server is listening on all IP addresses and not using encryption. This is not recommended.
 ...
 
 # remove the stopped container
+<<<<<<< HEAD
 docker rm d67fe77f1a84
 d67fe77f1a84
 ```
@@ -56,6 +80,18 @@ d67fe77f1a84
 
 ```
 docker run --rm -p 10000:8888 -v "$PWD":/home/jovyan/work jupyter/r-notebook:e5c5a7d3e52d
+=======
+$ docker rm d67fe77f1a84
+d67fe77f1a84
+```
+
+**Example 2** This command pulls the `jupyter/r-notebook` image tagged `33add21fab64` from Docker Hub if it is not already present on the local host.
+It then starts a container running a Jupyter Notebook server and exposes the server on host port 10000.
+The server logs appear in the terminal and include a URL to the notebook server, but with the internal container port (8888) instead of the the correct host port (10000).
+
+```bash
+$ docker run --rm -p 10000:8888 -v "${PWD}":/home/jovyan/work jupyter/r-notebook:33add21fab64
+>>>>>>> 70178b8e48d7825ceade6e2decf374bc3e792d90
 
 Executing the command: jupyter notebook
 [I 19:31:09.573 NotebookApp] Writing notebook server cookie secret to /home/jovyan/.local/share/jupyter/runtime/notebook_cookie_secret
@@ -74,16 +110,28 @@ Executing the command: jupyter notebook
         http://localhost:8888/?token=3b8dce890cb65570fb0d9c4a41ae067f7604873bd604f5ac
 ```
 
+<<<<<<< HEAD
 Pressing `Ctrl-C` shuts down the notebook server and immediately destroys the Docker container. Files written to `~/work` in the container remain touched. Any other changes made in the container are lost.
 
 **Example 3** This command pulls the `jupyter/all-spark-notebook` image currently tagged `latest` from Docker Hub if an image tagged `latest` is not already present on the local host. It then starts a container named `notebook` running a JupyterLab server and exposes the server on a randomly selected port. 
 
 ```
+=======
+Pressing `Ctrl-C` shuts down the notebook server and immediately destroys the Docker container.
+Files written to `~/work` in the container remain touched.
+Any other changes made in the container are lost.
+
+**Example 3** This command pulls the `jupyter/all-spark-notebook` image currently tagged `latest` from Docker Hub if an image tagged `latest` is not already present on the local host.
+It then starts a container named `notebook` running a JupyterLab server and exposes the server on a randomly selected port.
+
+```bash
+>>>>>>> 70178b8e48d7825ceade6e2decf374bc3e792d90
 docker run -d -P --name notebook jupyter/all-spark-notebook
 ```
 
 The assigned port and notebook server token are visible using other Docker commands.
 
+<<<<<<< HEAD
 ```
 # get the random host port assigned to the container port 8888
 docker port notebook 8888
@@ -91,16 +139,33 @@ docker port notebook 8888
 
 # get the notebook token from the logs
 docker logs --tail 3 notebook
+=======
+```bash
+# get the random host port assigned to the container port 8888
+$ docker port notebook 8888
+0.0.0.0:32769
+
+# get the notebook token from the logs
+$ docker logs --tail 3 notebook
+>>>>>>> 70178b8e48d7825ceade6e2decf374bc3e792d90
     Copy/paste this URL into your browser when you connect for the first time,
     to login with a token:
         http://localhost:8888/?token=15914ca95f495075c0aa7d0e060f1a78b6d94f70ea373b00
 ```
 
+<<<<<<< HEAD
 Together, the URL to visit on the host machine to access the server in this case is http://localhost:32769?token=15914ca95f495075c0aa7d0e060f1a78b6d94f70ea373b00.
 
 The container runs in the background until stopped and/or removed by additional Docker commands.
 
 ```
+=======
+Together, the URL to visit on the host machine to access the server in this case is <http://localhost:32769?token=15914ca95f495075c0aa7d0e060f1a78b6d94f70ea373b00>.
+
+The container runs in the background until stopped and/or removed by additional Docker commands.
+
+```bash
+>>>>>>> 70178b8e48d7825ceade6e2decf374bc3e792d90
 # stop the container
 docker stop notebook
 notebook
@@ -112,6 +177,7 @@ notebook
 
 ## Using Binder
 
+<<<<<<< HEAD
 [Binder](https://mybinder.org/) is a service that allows you to create and share custom computing environments for projects in version control. You can use any of the Jupyter Docker Stacks images as a basis for a Binder-compatible Dockerfile. See the [docker-stacks example](https://mybinder.readthedocs.io/en/latest/sample_repos.html#using-a-docker-image-from-the-jupyter-docker-stacks-repository) and [Using a Dockerfile](https://mybinder.readthedocs.io/en/latest/tutorials/dockerfile.html) sections in the [Binder documentation](https://mybinder.readthedocs.io/en/latest/index.html) for instructions.
 
 ## Using JupyterHub
@@ -121,3 +187,25 @@ You can configure JupyterHub to launcher Docker containers from the Jupyter Dock
 ## Using Other Tools and Services
 
 You can use the Jupyter Docker Stacks with any Docker-compatible technology (e.g., [Docker Compose](https://docs.docker.com/compose/), [docker-py](https://github.com/docker/docker-py), your favorite cloud container service). See the documentation of the tool, library, or service for details about how to reference, configure, and launch containers from these images.
+=======
+[Binder](https://mybinder.org/) is a service that allows you to create and share custom computing environments for projects in version control.
+You can use any of the Jupyter Docker Stacks images as a basis for a Binder-compatible Dockerfile.
+See the
+[docker-stacks example](https://mybinder.readthedocs.io/en/latest/sample_repos.html#using-a-docker-image-from-the-jupyter-docker-stacks-repository) and
+[Using a Dockerfile](https://mybinder.readthedocs.io/en/latest/tutorials/dockerfile.html) sections in the
+[Binder documentation](https://mybinder.readthedocs.io/en/latest/index.html) for instructions.
+
+## Using JupyterHub
+
+You can configure JupyterHub to launcher Docker containers from the Jupyter Docker Stacks images.
+If you've been following the [Zero to JupyterHub with Kubernetes](https://zero-to-jupyterhub.readthedocs.io/en/latest/) guide,
+see the [Use an existing Docker image](https://zero-to-jupyterhub.readthedocs.io/en/latest/jupyterhub/customizing/user-environment.html#choose-and-use-an-existing-docker-image) section for details.
+If you have a custom JupyterHub deployment, see the [Picking or building a Docker image](https://github.com/jupyterhub/dockerspawner#picking-or-building-a-docker-image)
+instructions for the [dockerspawner](https://github.com/jupyterhub/dockerspawner) instead.
+
+## Using Other Tools and Services
+
+You can use the Jupyter Docker Stacks with any Docker-compatible technology
+(e.g., [Docker Compose](https://docs.docker.com/compose/), [docker-py](https://github.com/docker/docker-py), your favorite cloud container service).
+See the documentation of the tool, library, or service for details about how to reference, configure, and launch containers from these images.
+>>>>>>> 70178b8e48d7825ceade6e2decf374bc3e792d90

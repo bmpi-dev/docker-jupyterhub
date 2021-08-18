@@ -10,6 +10,7 @@ def test_spark_shell(container):
     """Checking if Spark (spark-shell) is running properly"""
     c = container.run(
         tty=True,
+<<<<<<< HEAD
         command=['start.sh', 'bash', '-c', 'spark-shell <<< "1+1"']
     )
     c.wait(timeout=60)
@@ -28,3 +29,11 @@ def test_pyspark(container):
     assert rv == 0 or rv["StatusCode"] == 0, "pyspark not in PYTHONPATH"
     logs = c.logs(stdout=True).decode('utf-8')
     LOGGER.debug(logs)
+=======
+        command=["start.sh", "bash", "-c", 'spark-shell <<< "1+1"'],
+    )
+    c.wait(timeout=60)
+    logs = c.logs(stdout=True).decode("utf-8")
+    LOGGER.debug(logs)
+    assert "res0: Int = 2" in logs, "spark-shell does not work"
+>>>>>>> 70178b8e48d7825ceade6e2decf374bc3e792d90

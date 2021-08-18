@@ -41,4 +41,8 @@ include softlayer.makefile
 
 # Preset notebook configurations
 include self-signed.makefile
+<<<<<<< HEAD
 include letsencrypt.makefile
+=======
+include letsencrypt.makefile
+>>>>>>> 70178b8e48d7825ceade6e2decf374bc3e792d90

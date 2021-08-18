@@ -14,8 +14,16 @@ s = 1 + np.sin(2 * np.pi * t)
 fig, ax = plt.subplots()
 ax.plot(t, s)
 
+<<<<<<< HEAD
 ax.set(xlabel='time (s)', ylabel='voltage (mV)',
        title='About as simple as it gets, folks')
+=======
+ax.set(
+    xlabel="time (s)",
+    ylabel="voltage (mV)",
+    title="About as simple as it gets, folks",
+)
+>>>>>>> 70178b8e48d7825ceade6e2decf374bc3e792d90
 ax.grid()
 # Note that the test can be run headless by checking if an image is produced
 file_path = os.path.join("/tmp", "test.png")

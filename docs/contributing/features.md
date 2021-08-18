@@ -11,7 +11,11 @@ Please follow the process below to suggest a new feature for inclusion in one of
 1. [Open a GitHub issue](https://github.com/jupyter/docker-stacks/issues) describing the feature
    you'd like to contribute.
 2. Discuss with the maintainers whether the addition makes sense in
+<<<<<<< HEAD
    [one of the core stacks](../using/selecting.md#Core-Stacks), as a
+=======
+   [one of the core stacks](../using/selecting.md#core-stacks), as a
+>>>>>>> 70178b8e48d7825ceade6e2decf374bc3e792d90
    [recipe in the documentation](recipes.md), as a [community stack](stacks.md), or as something
    else entirely.
 
@@ -37,6 +41,7 @@ Roughly speaking, we evaluate new features based on the following criteria:
 If there's agreement that the feature belongs in one or more of the core stacks:
 
 1. Implement the feature in a local clone of the `jupyter/docker-stacks` project.
+<<<<<<< HEAD
 2. Please build the image locally before submitting a pull request. Building the image locally
    shortens the debugging cycle by taking some load off GitHub Actions, which graciously provide
    free build services for open source projects like this one. If you use `make`, call:
@@ -45,5 +50,16 @@ If there's agreement that the feature belongs in one or more of the core stacks:
    ```
 3. [Submit a pull request](https://github.com/PointCloudLibrary/pcl/wiki/A-step-by-step-guide-on-preparing-and-submitting-a-pull-request)
    (PR) with your changes.
+=======
+2. Please build the image locally before submitting a pull request
+   Building the image locally shortens the debugging cycle by taking some load off GitHub Actions, which graciously provide free build services for open source projects like this one.
+   If you use `make`, call:
+
+   ```bash
+   make build/somestack-notebook
+   ```
+
+3. [Submit a pull request](https://github.com/PointCloudLibrary/pcl/wiki/A-step-by-step-guide-on-preparing-and-submitting-a-pull-request)(PR) with your changes.
+>>>>>>> 70178b8e48d7825ceade6e2decf374bc3e792d90
 4. Watch for GitHub to report a build success or failure for your PR on GitHub.
 5. Discuss changes with the maintainers and address any build issues.

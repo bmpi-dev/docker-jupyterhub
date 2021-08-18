@@ -1,5 +1,11 @@
 [flake8]
+<<<<<<< HEAD
 ignore = W605,W503,W504,H306,H238,H301,H202
 max-line-length = 120
 per-file-ignores =
     test/test_packages.py:E501
+=======
+max-line-length = 88
+select = C,E,F,W,B,B950
+extend-ignore = E203, E501
+>>>>>>> 70178b8e48d7825ceade6e2decf374bc3e792d90

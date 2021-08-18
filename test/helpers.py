@@ -34,8 +34,12 @@ LOGGER = logging.getLogger(__name__)
 
 
 class CondaPackageHelper:
+<<<<<<< HEAD
     """Conda package helper permitting to get information about packages
     """
+=======
+    """Conda package helper permitting to get information about packages"""
+>>>>>>> 70178b8e48d7825ceade6e2decf374bc3e792d90
 
     def __init__(self, container):
         # if isinstance(container, TrackedContainer):
@@ -50,7 +54,12 @@ class CondaPackageHelper:
         """Start the TrackedContainer and return an instance of a running container"""
         LOGGER.info(f"Starting container {container.image_name} ...")
         return container.run(
+<<<<<<< HEAD
             tty=True, command=["start.sh", "bash", "-c", "sleep infinity"]
+=======
+            tty=True,
+            command=["start.sh", "bash", "-c", "sleep infinity"],
+>>>>>>> 70178b8e48d7825ceade6e2decf374bc3e792d90
         )
 
     @staticmethod
@@ -75,7 +84,13 @@ class CondaPackageHelper:
         if self.specs is None:
             LOGGER.info("Grabing the list of specifications ...")
             self.specs = CondaPackageHelper._packages_from_json(
+<<<<<<< HEAD
                 self._execute_command(CondaPackageHelper._conda_export_command(True))
+=======
+                self._execute_command(
+                    CondaPackageHelper._conda_export_command(from_history=True)
+                )
+>>>>>>> 70178b8e48d7825ceade6e2decf374bc3e792d90
             )
         return self.specs
 
@@ -111,9 +126,13 @@ class CondaPackageHelper:
     def available_packages(self):
         """Return the available packages"""
         if self.available is None:
+<<<<<<< HEAD
             LOGGER.info(
                 "Grabing the list of available packages (can take a while) ..."
             )
+=======
+            LOGGER.info("Grabing the list of available packages (can take a while) ...")
+>>>>>>> 70178b8e48d7825ceade6e2decf374bc3e792d90
             # Keeping command line output since `conda search --outdated --json` is way too long ...
             self.available = CondaPackageHelper._extract_available(
                 self._execute_command(["conda", "search", "--outdated"])
@@ -130,7 +149,11 @@ class CondaPackageHelper:
         return ddict
 
     def check_updatable_packages(self, specifications_only=True):
+<<<<<<< HEAD
         """Check the updatables packages including or not dependencies"""
+=======
+        """Check the updatable packages including or not dependencies"""
+>>>>>>> 70178b8e48d7825ceade6e2decf374bc3e792d90
         specs = self.specified_packages()
         installed = self.installed_packages()
         available = self.available_packages()
@@ -144,6 +167,7 @@ class CondaPackageHelper:
                     continue
                 current = min(inst_vs, key=CondaPackageHelper.semantic_cmp)
                 newest = avail_vs[-1]
+<<<<<<< HEAD
                 if avail_vs and current != newest:
                     if CondaPackageHelper.semantic_cmp(
                         current
@@ -151,6 +175,17 @@ class CondaPackageHelper:
                         self.comparison.append(
                             {"Package": pkg, "Current": current, "Newest": newest}
                         )
+=======
+                if (
+                    avail_vs
+                    and current != newest
+                    and CondaPackageHelper.semantic_cmp(current)
+                    < CondaPackageHelper.semantic_cmp(newest)
+                ):
+                    self.comparison.append(
+                        {"Package": pkg, "Current": current, "Newest": newest}
+                    )
+>>>>>>> 70178b8e48d7825ceade6e2decf374bc3e792d90
         return self.comparison
 
     @staticmethod
@@ -160,6 +195,10 @@ class CondaPackageHelper:
         def mysplit(string):
             def version_substrs(x):
                 return re.findall(r"([A-z]+|\d+)", x)
+<<<<<<< HEAD
+=======
+
+>>>>>>> 70178b8e48d7825ceade6e2decf374bc3e792d90
             return list(chain(map(version_substrs, string.split("."))))
 
         def str_ord(string):
@@ -180,10 +219,14 @@ class CondaPackageHelper:
 
     def get_outdated_summary(self, specifications_only=True):
         """Return a summary of outdated packages"""
+<<<<<<< HEAD
         if specifications_only:
             nb_packages = len(self.specs)
         else:
             nb_packages = len(self.installed)
+=======
+        nb_packages = len(self.specs if specifications_only else self.installed)
+>>>>>>> 70178b8e48d7825ceade6e2decf374bc3e792d90
         nb_updatable = len(self.comparison)
         updatable_ratio = nb_updatable / nb_packages
         return f"{nb_updatable}/{nb_packages} ({updatable_ratio:.0%}) packages could be updated"

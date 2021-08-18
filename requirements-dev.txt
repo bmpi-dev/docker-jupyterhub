@@ -1,9 +1,20 @@
 docker
+<<<<<<< HEAD
 pre-commit
 pytest
 recommonmark
 requests
 sphinx>=1.6
+=======
+myst-parser
+packaging
+plumbum
+pre-commit
+pytest
+requests
+sphinx>=2.1
+sphinx-copybutton
+>>>>>>> 70178b8e48d7825ceade6e2decf374bc3e792d90
 sphinx-intl
 tabulate
 transifex-client
